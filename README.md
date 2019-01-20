@@ -7,5 +7,8 @@ around an environment reducing the size of puddles).
 
 2. Functionality
 3. Implementation 
+- The game will be built using HTML, CSS and JavaScript 
+- I will be implememnting my code predominantly in JS, with OOP.
+
 4. Usage 
 5. Running 
