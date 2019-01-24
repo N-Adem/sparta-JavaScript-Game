@@ -77,6 +77,10 @@ document.addEventListener("DOMContentLoaded", function () {
     let y3 = Math.random() * window.innerHeight;
     let x4 = Math.random() * window.innerWidth;
     let y4 = Math.random() * window.innerHeight;
+    let x5 = Math.random() * window.innerWidth;
+    let y5 = Math.random() * window.innerHeight;
+    let x6 = Math.random() * window.innerWidth;
+    let y6 = Math.random() * window.innerHeight;
     function Bucket(posx, posy) {
         this.posx = posx;
         this.posy = posy;
@@ -92,7 +96,11 @@ document.addEventListener("DOMContentLoaded", function () {
     var isAction2 = true;
     var isAction3 = true;
     var isAction4 = true;
-    var isNext = true;
+    var isAction5 = false;
+    var isAction6 = false;
+    var isOne = true;
+    var isTwo = false;
+
     function init() {
         //let player1 = new Obj(100, 200, 50, 50);
 
@@ -100,10 +108,10 @@ document.addEventListener("DOMContentLoaded", function () {
         if (isAction1 === true) {
             let puddle1 = new GenPuddle(x1, y1, 100, 100);
             if (checkDistance(buck.posx, buck.posy, puddle1.xpos, puddle1.ypos) <= 70) {
-                console.log("---there has been a collision");
+              //  console.log("---there has been a collision");
                 //----------| Point system |----------
                 newScore += score;
-                console.log("new score is =", newScore);
+             //   console.log("new score is =", newScore);
                 isAction1 = false;
                 //document.getElementById('pscore').innerHTML = parseInt(newScore);
             }
@@ -111,10 +119,10 @@ document.addEventListener("DOMContentLoaded", function () {
         if (isAction2 === true) {
             let puddle2 = new GenPuddle(x2, y2, 100, 100);
             if (checkDistance(buck.posx, buck.posy, puddle2.xpos, puddle2.ypos) <= 70) {
-                console.log("---there has been a collision");
+              //  console.log("---there has been a collision");
                 //----------| Point system |----------
                 newScore += score;
-                console.log("new score is =", newScore);
+              //  console.log("new score is =", newScore);
                 isAction2 = false;
                 //document.getElementById('pscore').innerHTML = parseInt(newScore);
             }
@@ -124,10 +132,10 @@ document.addEventListener("DOMContentLoaded", function () {
             let puddle3 = new GenPuddle(x3, y3, 100, 100);
             //console.log("score is = ", newScore);
             if (checkDistance(buck.posx, buck.posy, puddle3.xpos, puddle3.ypos) <= 70) {
-                console.log("---there has been a collision");
+              //  console.log("---there has been a collision");
                 //----------| Point system |----------
                 newScore += score;
-                console.log("new score is =", newScore);
+               // console.log("new score is =", newScore);
                 isAction3 = false;
                 //document.getElementById('pscore').innerHTML = parseInt(newScore);
             }
@@ -135,14 +143,62 @@ document.addEventListener("DOMContentLoaded", function () {
         if (isAction4 === true) {
             let puddle4 = new GenPuddle(x4, y4, 100, 100);
             if (checkDistance(buck.posx, buck.posy, puddle4.xpos, puddle4.ypos) <= 70) {
-                console.log("---there has been a collision");
+                //console.log("---there has been a collision");
                 //----------| Point system |----------
                 newScore += score;
-                console.log("new score is =", newScore);
+                //console.log("new score is =", newScore);
                 isAction4 = false;
                 //document.getElementById('pscore').innerHTML = parseInt(newScore);
             }
         }
+          //===========| Is Action 5 & 6 |===================
+          if(isAction1 && isAction3 === false)
+          {
+              isAction5 = true;
+              isAction3 = true;
+          }
+          if(isAction2 && isAction4 === false)
+          {
+              isAction6 = true;
+             isAction2 = true;
+          }
+        //=====================================================================
+        if (isAction5 === true) {
+            let puddle5 = new GenPuddle(x5, y5, 100, 100);
+            if (checkDistance(buck.posx, buck.posy, puddle5.xpos, puddle5.ypos) <= 70) {
+                //console.log("---there has been a collision");
+                //----------| Point system |----------
+                newScore += score;
+                //console.log("new score is =", newScore);
+                isAction5 = false;
+                isAction1 = true;
+                isAction3 = true;
+                //document.getElementById('pscore').innerHTML = parseInt(newScore);
+            }
+        }
+        if (isAction6 === true) {
+            let puddle6 = new GenPuddle(x6, y6, 100, 100);
+            if (checkDistance(buck.posx, buck.posy, puddle6.xpos, puddle6.ypos) <= 70) {
+                //console.log("---there has been a collision");
+                //----------| Point system |----------
+                newScore += score;
+                //console.log("new score is =", newScore);
+                isAction6 = false;
+                isAction2 = true;
+                isAction4 = true;
+                //document.getElementById('pscore').innerHTML = parseInt(newScore);
+            }
+        }
+
+        if(newScore >= 7)
+        {
+            isAction1 = true;
+        }
+        if(newScore >= 25){
+            context.fillStyle = "lightBlue"
+            context.fillText("Game Over - You Kept the place dry", 500, 700)
+        }
+        
         //---------------------------------------------------------------------------------
         context.fillStyle = "red";
         context.font = "80px Arial";
@@ -154,9 +210,12 @@ document.addEventListener("DOMContentLoaded", function () {
         requestAnimationFrame(animate);
         context.clearRect(0, 0, innerWidth, innerHeight);
         //--------------------------------------------------------------------------------
-        if (isNext === true) {
+        if (isOne === true) {
             init();
+            isTwo = true;
         }
+       
+        
         //------------------------------------------------------------------------------
 
         if (isUp === true) {
