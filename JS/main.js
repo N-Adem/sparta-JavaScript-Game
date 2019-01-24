@@ -17,12 +17,12 @@ document.addEventListener("DOMContentLoaded", function () {
         //context.drawImage(img, 10, 10);
         context.fillRect(xpos, ypos, width, height);
         function draw() {
-            context.clearRect(0, 0, canvas.innerWidth, canvas.innerHeight);
+            context.clearRect(0, 0, innerWidth, innerHeight);
         }
     }
     //======================| Player Object|========================
-    let dx = 1;
-    let dy = 1;
+    var dx = 1;
+    var dy = 1;
     function Obj(x, y, w, h) {
         this.x = x;
         this.y = y;
@@ -30,33 +30,80 @@ document.addEventListener("DOMContentLoaded", function () {
         context.fillRect(x, y, w, h);
     }
     let player1 = new Obj(100, 200, 50, 50);
+
     function update() {
         requestAnimationFrame(update);
         context.clearRect(0, 0, canvas.innerWidth, canvas.innerHeight);
-        document.addEventListener('keydown', function () {
-            if (event.key === "w") {
-                console.log("player y -pos" + player1.y);
-                player1.y -= dy;
-            }
-            if (event.key === "s") {
-                console.log("player y +pos" + player1.y);
-                player1.y += dy;
-            }
-            if (event.key === "a") {
-                console.log("player x -pos" + player1.x);
-                player1.x -= dx;
-            }
-            if (event.key === "d") {
-                player1.x += dx;
-                console.log("player x +pos" + player1.x);
-            };
-        });
     }
-    update();
+    //=========================================================================================================================================================================
+    
+    var isLeft = false;
+    var isRight = false;
+    var isUp = false;
+    var isDown = false;
+
+    document.addEventListener('keydown', function () {
+        if (event.key === "w") {
+            console.log("player y -pos" + player1.y);
+            isUp = true;
+            isDown = false;
+            isLeft =false;
+            isRight = false;
+        }
+        if (event.key === "s") {
+            console.log("player y +pos" + player1.y);
+            isUp = false;
+            isDown = true;
+            isLeft =false;
+            isRight = false;
+        }
+        if (event.key === "a") {
+            console.log("player x -pos" + player1.x);
+            isUp = false;
+            isDown = false;
+            isLeft =true;
+            isRight = false;
+        }
+        if (event.key === "d") {
+            console.log("player x +pos" + player1.x);
+            isUp = false;
+            isDown = false;
+            isLeft =false;
+            isRight = true;
+        };
+    });
+    // update();
+    var x = 20;
+    var y = 20;
+    function play() {
+        requestAnimationFrame(play);
+        context.clearRect(0, 0, context.innerWidth, context.innerHeight);
+
+        context.beginPath();
+        context.arc(x, y, 30, 0, Math.PI * 2, false);
+        context.strokeStyle = "blue";
+        context.stroke();
+
+        if (isUp === true) {
+            y-=1;
+        }
+        if (isDown === true) {
+            y+=1;
+        }
+        if (isLeft === true) {
+            x-=1;
+        }
+        if (isRight === true) {
+            x+=1;
+        }
+
+    }
+
+play();
     //=========================| Spawn Puddle|===============================
-   let score = 1;
-   let newScore =0;
-   console.log("score is = ", newScore);
+    let score = 1;
+    let newScore = 0;
+    console.log("score is = ", newScore);
     function SpawnPuddle(player) {
         let swamp = [];
         for (let i = 0; i < 4; i++) {
@@ -72,15 +119,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 //----------| Point system |----------
                 newScore += score;
                 console.log("new score is =", newScore);
-               // document.getElementById('pscore').innerHTML = parseInt(newScore);
+                // document.getElementById('pscore').innerHTML = parseInt(newScore);
                 context.fillStyle = "red";
                 context.font = "80px Arial";
-                context.fillText(newScore, 10,80);
+                context.fillText(newScore, 10, 80);
             }
         }
-    }
-    function printScore(){
-
     }
     //==================| Check Distance |=======================================|
     function checkDistance(x1, y1, x2, y2) {
@@ -92,6 +136,7 @@ document.addEventListener("DOMContentLoaded", function () {
     //============================| Calling function|=============
     SpawnPuddle(player1);
 })//======= | END OF DOM EVENT LISTENER
+//----------| Code notes for the character movement |-------------
 // f- init ()
 // f- update (draw())
 // f - animate
