@@ -1,13 +1,42 @@
-h1 {
-    font-size: 40px;
+body {
+    background-color: lightblue;
 }
+h1 {
+    font-size: 100px;
+    text-align: center;
+    text-decoration-color: yellow;
+    color: lightskyblue;
 
+}#pscore {
+    color: red;
+    font-size: 30px;
+    align-content: space-around;
+}
 canvas {
  border: thick solid black;
  background:lightsalmon;   
  background-image: url("https://cdn.pixabay.com/photo/2016/11/29/01/53/floor-1866663_1280.jpg");
 }
 
-.puddle {
+.imageWater {
     background-image: url("https://images.freeimages.com/images/large-previews/e91/water-1562529.jpg");
+}
+
+.intro-page {
+    background-image: url("https://images.freeimages.com/images/large-previews/7f1/water-1177067.jpg");  
+    
+}
+.button {
+    font-size: 70px;
+    margin-left: 900px;
+    padding: 60px;
+}
+.introduction {
+    color: lightblue;
+    font-size: 70px;
+    margin-right: 50px;
+}
+.intro-text {
+    color: lightblue;
+    font-size: 30px; 
 }
