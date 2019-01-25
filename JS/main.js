@@ -6,6 +6,9 @@ document.addEventListener("DOMContentLoaded", function () {
     let context = canvas.getContext('2d');
     let img = document.getElementById('imageWater');
     let pScore = document.getElementById('pscore');
+    var sound = document.createElement('audio');
+    //var sound = document.getElementById("myAudio");
+   
     //==================| Creates the canvas background|==============|
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
@@ -190,13 +193,26 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         }
 
-        if(newScore >= 7)
+        if(newScore >= 4)
         {
             isAction1 = true;
         }
-        if(newScore >= 25){
-            context.fillStyle = "lightBlue"
-            context.fillText("Game Over - You Kept the place dry", 500, 700)
+
+        if(newScore >= 30)
+        {
+            isAction3 = true;
+            isAction2 = true;
+        }
+        
+        if(newScore >= 70)
+        {
+            isAction4 = true;
+            isAction5 = true;
+        }
+        if(newScore >= 100){
+            context.fillStyle = "lightBlue";
+            context.font = "60px Arial";
+            context.fillText("You Kept the place dry,Loading next stage ........", 100, 300);
         }
         
         //---------------------------------------------------------------------------------
@@ -204,14 +220,19 @@ document.addEventListener("DOMContentLoaded", function () {
         context.font = "80px Arial";
         context.fillText(newScore, 10, 80);
 
+      
         //isAction3 = true;
     }
     function animate() {
         requestAnimationFrame(animate);
         context.clearRect(0, 0, innerWidth, innerHeight);
+        //sound.autoplay = true;
+        //sound.play();
+        let su = new Audio("/audio/rain-02.mp3d");
+        su.play();
         //--------------------------------------------------------------------------------
         if (isOne === true) {
-            init();
+            init(); 
             isTwo = true;
         }
        
