@@ -6,19 +6,22 @@ document.addEventListener("DOMContentLoaded", function () {
     let context = canvas.getContext('2d');
     let img = document.getElementById('imageWater');
     let pScore = document.getElementById('pscore');
-    var sound = document.createElement('audio');
+    var s = document.createElement('audio');
+    let playIm =  new Image();
+    playIm.src= "img/water.jpg";
     //var sound = document.getElementById("myAudio");
    
     //==================| Creates the canvas background|==============|
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
-    //=====================| Puddle Spawn |=======================
+   // let sound = new Audio ("./audio/rain-sound.mp3").play();
+   // sound.play();    //=====================| Puddle Spawn |=======================
     function GenPuddle(xpos, ypos, width, height) {
         this.xpos = xpos;
         this.ypos = ypos;
-        context.fillStyle = "blue";
-        //context.drawImage(img, 10, 10);
+        context.fillStyle = "lightBlue";
+       // context.drawImage(playIm, 10, 10);
         context.fillRect(xpos, ypos, width, height);
     }
     //======================| Player Object|========================
@@ -89,7 +92,7 @@ document.addEventListener("DOMContentLoaded", function () {
         this.posy = posy;
         context.beginPath();
         context.arc(xp, yp, 30, 0, Math.PI * 2, false);
-        context.strokeStyle = "yellow";
+        context.strokeStyle = "lightYellow";
         context.lineWidth = 40;
         context.stroke();
     }
@@ -109,7 +112,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         let buck = new Bucket(xp, yp);
         if (isAction1 === true) {
-            let puddle1 = new GenPuddle(x1, y1, 100, 100);
+            let puddle1 = new GenPuddle(x1, y1, 100, 100, "blue");
             if (checkDistance(buck.posx, buck.posy, puddle1.xpos, puddle1.ypos) <= 70) {
               //  console.log("---there has been a collision");
                 //----------| Point system |----------
@@ -120,7 +123,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         }
         if (isAction2 === true) {
-            let puddle2 = new GenPuddle(x2, y2, 100, 100);
+            let puddle2 = new GenPuddle(x2, y2, 100, 100,"red");
             if (checkDistance(buck.posx, buck.posy, puddle2.xpos, puddle2.ypos) <= 70) {
               //  console.log("---there has been a collision");
                 //----------| Point system |----------
@@ -212,7 +215,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if(newScore >= 100){
             context.fillStyle = "lightBlue";
             context.font = "60px Arial";
-            context.fillText("You Kept the place dry,Loading next stage ........", 100, 300);
+            context.fillText(" Game Over ", 100, 300);
         }
         
         //---------------------------------------------------------------------------------
@@ -223,13 +226,16 @@ document.addEventListener("DOMContentLoaded", function () {
       
         //isAction3 = true;
     }
+    let su = new Audio ("../audio/rain-sound.mp3").play();
+        //sound.play();
     function animate() {
         requestAnimationFrame(animate);
         context.clearRect(0, 0, innerWidth, innerHeight);
+        
         //sound.autoplay = true;
         //sound.play();
-        let su = new Audio("/audio/rain-02.mp3d");
-        su.play();
+       
+       
         //--------------------------------------------------------------------------------
         if (isOne === true) {
             init(); 
