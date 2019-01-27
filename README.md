@@ -25,3 +25,12 @@ and gain points until the puddles stop spawning.
 4. Running 
 - The project curerently runs on the web in full size. 
 (A further scaleable feature will be added in due time).
+ 
+ 5. Current issues which are currently being updated are - the player isn't able to go back to the menu page upon completing the game,
+and the spawning system isn't as natural as expected. 
+
+*New* - Update will be released on 03/02/2019)
+
+ 6. Accessibility 
+ The game can be accessed via my github pages, the link below will direct you there
+https://n-adem.github.io/sparta-JavaScript-Game/ 
