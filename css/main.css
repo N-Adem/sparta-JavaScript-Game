@@ -28,6 +28,11 @@ canvas {
     margin-left: 900px;
     padding: 60px;
 }
+.menu-button {
+    position: absolute;
+    right: 10px;
+    top: 5px;
+}
 .introduction {
     color: lightblue;
     font-size: 70px;
