@@ -7,8 +7,7 @@ execution.
 
 (This game is a working progress and will be updated - new releases will be published in this README file). 
 
-1. Initial Commit  19/01/2019
-- Project Overview
+1. Project Overview
 - The game concept has been finalised. (The concept involves a charactrer which the user is able to control. Who travels 
 around an environment removing as many puddles as possible).
 
