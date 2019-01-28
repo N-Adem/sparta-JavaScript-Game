@@ -216,26 +216,20 @@ document.addEventListener("DOMContentLoaded", function () {
             context.fillStyle = "lightBlue";
             context.font = "60px Arial";
             context.fillText(" Game Over ", 100, 300);
-        }
-        
+        }        
         //---------------------------------------------------------------------------------
         context.fillStyle = "red";
         context.font = "80px Arial";
-        context.fillText(newScore, 10, 80);
-
-      
+        context.fillText(newScore, 10, 80);    
         //isAction3 = true;
     }
     let su = new Audio ("../audio/rain-sound.mp3").play();
         //sound.play();
     function animate() {
         requestAnimationFrame(animate);
-        context.clearRect(0, 0, innerWidth, innerHeight);
-        
+        context.clearRect(0, 0, innerWidth, innerHeight);      
         //sound.autoplay = true;
         //sound.play();
-       
-       
         //--------------------------------------------------------------------------------
         if (isOne === true) {
             init(); 
