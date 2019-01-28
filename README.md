@@ -19,7 +19,7 @@ and gain points until the puddles stop spawning.
 
 3. Implementation 
 - The game has been built using HTML, CSS and JavaScript 
-- I will be implememnting my code predominantly in JavaScript with OOP principles.
+- It was implememnted predominantly in JavaScript using the OOP principles.
 
 4. Running 
 - The project curerently runs on the web in full size. 
