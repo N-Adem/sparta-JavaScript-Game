@@ -15,13 +15,13 @@ h1 {
 canvas {
  border: thick solid black;
  background:lightsalmon;   
- background-image: url("https://cdn.pixabay.com/photo/2016/11/29/01/53/floor-1866663_1280.jpg");
+ background-image: url("../img/wooden-floor.jpg");
 }
 .imageWater {
     background-image: url("https://images.freeimages.com/images/large-previews/e91/water-1562529.jpg");
 }
 .intro-page {
-    background-image: url("https://images.freeimages.com/images/large-previews/7f1/water-1177067.jpg");    
+    background-image: url("../img/water-intro.jpg");    
 }
 .button {
     font-size: 70px;

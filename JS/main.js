@@ -240,9 +240,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (isOne === true) {
             init(); 
             isTwo = true;
-        }
-       
-        
+        }  
         //------------------------------------------------------------------------------
 
         if (isUp === true) {
@@ -282,7 +280,6 @@ document.addEventListener("DOMContentLoaded", function () {
             context.font = "80px Arial";
             context.fillText(newScore, 10, 80);
         }
-
     }
     //==================| Check Distance |=======================================|
     function checkDistance(x1, y1, x2, y2) {
